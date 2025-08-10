@@ -1,0 +1,13 @@
+name: dependents
+on:
+  pull_request:
+
+permissions:
+  contents: read
+  issues: write
+  pull-requests: write
+jobs:
+  find-dependents:
+    uses: imagenai/github-actions/.github/workflows/py-package-notify-dependents.yml@master
+    secrets:
+      gh_app_private_key: ${{ secrets.GHA_APP_PRIVATE_KEY }}
