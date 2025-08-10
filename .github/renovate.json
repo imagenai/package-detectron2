@@ -1,0 +1,16 @@
+{
+  "extends": ["config:base"],
+  "suppressNotifications": ["configErrorIssue", "dependencyLookupWarnings"],
+  "dependencyDashboard": false,
+  "reviewersFromCodeOwners": true,
+  "enabledManagers": ["pip_requirements", "pip_setup", "pep621", "pep723"],
+  "packageRules": [
+    {
+      "groupName": "gemfury-dependencies",
+      "matchManagers": ["pip_requirements", "pip_setup", "pep621", "pep723"],
+      "matchDatasources": ["pypi"],
+      "registryUrls": ["https://pypi.fury.io/imagenai"]
+    }
+  ],
+  "prHourlyLimit": 10
+}
