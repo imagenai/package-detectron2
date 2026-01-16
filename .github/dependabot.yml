@@ -1,0 +1,21 @@
+version: 2
+registries:
+  fury-internal:
+    type: python-index
+    url: https://pypi.fury.io/imagenai
+    token: ${{ secrets.GEMFURY_DEPLOY_TOKEN }}
+    replaces-base: false 
+
+
+updates:
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    registries: ["fury-internal"]
+    insecure-external-code-execution: allow   # wheel build needs this
+    open-pull-requests-limit: 5               # safe default → only 1 will open
+    groups:
+      all-deps:                # PR title: “build(deps): bump all-deps”
+        patterns:
+          - "*"                # ← wildcard = include every dependency
